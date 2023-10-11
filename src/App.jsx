@@ -16,7 +16,7 @@ function App() {
   },[])
   
   useEffect(()=>{
-    
+
   const pokemon = []
     data.map( poke =>{
        fetch(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)

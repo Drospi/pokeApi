@@ -1,10 +1,29 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-transform: capitalize;
+}
+#root{
+  margin: 0;
+  padding: 0;
+}
 .all{
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
-  padding: 1rem;
+  width: calc(100vw - 2rem);
   align-items: center;
   justify-content: center;
+}
+.all-w{
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(90vw - 15rem);
+  align-items: center;
+  justify-content: center;
+}
+
+.todo{
+  display: flex;
 }
 .card{
   width: 100px;
@@ -13,8 +32,24 @@
   align-items: center;
   justify-content: center;
   background-color: aqua;
-  margin: 1rem;
   cursor: pointer;
+  margin: 1rem;
+  border-radius: 10px;
+  transition: 400ms ease-in-out;
+}
+@keyframes agrandar{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.card:hover{
+  transform: scale(1.2);
 }
 .card img{
   width: 80%;
@@ -36,7 +71,9 @@
 }
 .caracteristicas img{
   width: 80%;
+  
+  animation: agrandar 3s infinite;
 }
-.todo{
-  display: flex;
+.x{
+  cursor: pointer;
 }

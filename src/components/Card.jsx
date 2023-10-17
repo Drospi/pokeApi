@@ -6,7 +6,7 @@ export const Card = (el) => {
   return (
     <div className="todo">
       <div className={active ? "caracteristicas d-none" : "caracteristicas"}>
-        <h1 onClick={() => setActive(true)}>x</h1>
+        <h1 className="x" onClick={() => setActive(true)}>x</h1>
         <img src={el.data[num]?.sprites.other.home.front_default} alt="" />
         <h3>Nombre: {el.data[num]?.forms[0].name}</h3>
         <div>
@@ -21,7 +21,7 @@ export const Card = (el) => {
         <p>Peso: {el.data[num]?.weight}</p>
         <p>Tipo: {el.data[num]?.types.map((typ)=>typ.type.name+' ')}</p>
       </div>
-      <div className="all">
+      <div className={active?"all":"all-w"}>
         {el.data.map((poke, key) => {
           return (
             <div

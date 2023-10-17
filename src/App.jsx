@@ -15,20 +15,23 @@ function App() {
     getData()
   },[])
   
-  useEffect(()=>{
+  useEffect(() => {
+    const getPokemonsData = async () => {
+      const promises = data.map(poke =>
+        fetch(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
+          .then(res => res.json())
+      )
+      const pokemonData = await Promise.all(promises)
+      setPokemons(pokemonData)
+    }
 
-  const pokemon = []
-    data.map( poke =>{
-       fetch(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
-      .then(res=>res.json())
-      .then(data=>pokemon.push(data))
-    })
-    setPokemons(pokemon)
-  },[data])
-  console.log(pokemons);
+    if (data.length > 0) {
+      getPokemonsData()
+    }
+  }, [data])
   return (
     <>
-    <Card name={data.name} data={pokemons}></Card>
+    <Card name={data?.name} data={pokemons}></Card>
     </>
   )
 }
